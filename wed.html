@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SHINING 6 | พรรคเบอร์ 6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Prompt:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-gradient: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            --black: #050505;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--black); 
+            color: white; 
+            font-family: 'Prompt', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+        .nav-logo { font-size: 1.5rem; font-weight: 600; color: var(--gold); letter-spacing: 2px; }
+        .nav-tagline { font-family: 'Cormorant Garamond'; font-style: italic; font-size: 0.9rem; color: #888; }
+
+        /* --- Hero Section (ปรับตาม image_84d29c.jpg) --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('155911_0.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .candidate-tag {
+            font-size: 1.4rem;
+            letter-spacing: 8px;
+            color: var(--gold);
+            font-weight: 300;
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            line-height: 0.9;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .slogan-container {
+            background: rgba(0,0,0,0.6);
+            padding: 0.6rem 2.5rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+        .slogan-container p {
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: #fff;
+            font-weight: 200;
+        }
+
+        .hero-footer-text {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            opacity: 0.5;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        /* --- Policy Section --- */
+        .policy-section { padding: 8rem 10%; }
+        .accordion-item { border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .accordion-btn {
+            width: 100%; padding: 2.5rem 0; background: none; border: none;
+            color: white; display: flex; justify-content: space-between;
+            font-family: 'Cormorant Garamond'; font-size: 2.5rem; cursor: pointer;
+            transition: 0.3s;
+        }
+        .accordion-btn:hover { color: var(--gold); }
+
+        .accordion-content {
+            max-height: 0; overflow: hidden; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255,255,255,0.01);
+        }
+        .accordion-content.active { max-height: 1200px; padding-bottom: 4rem; }
+
+        .content-flex { display: flex; gap: 4rem; flex-wrap: wrap; align-items: center; padding: 2rem; }
+        .policy-text-box { flex: 1.4; min-width: 350px; }
+        .policy-inner-title { 
+            font-family: 'Cormorant Garamond'; font-size: 2.5rem; 
+            background: var(--gold-gradient); 
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .policy-description { font-size: 1.3rem; line-height: 1.8; color: #ddd; font-weight: 200; }
+        .policy-img { flex: 0.6; min-width: 250px; border: 1px solid var(--gold); }
+        .policy-img img { width: 100%; display: block; filter: grayscale(100%); transition: 0.5s; }
+        .accordion-item:hover img { filter: grayscale(0%); }
+
+        /* --- Continuation Section --- */
+        .legacy-section { padding: 8rem 10%; text-align: center; background: #080808; }
+        .legacy-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem; margin-top: 4rem;
+        }
+        .legacy-card {
+            border: 1px solid rgba(212, 175, 55, 0.1); padding: 3.5rem 1.5rem;
+            transition: 0.4s; background: rgba(255,255,255,0.02);
+        }
+        .legacy-card:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); transform: translateY(-10px); }
+        .legacy-card h4 { font-size: 1.4rem; color: #fff; letter-spacing: 1px; font-weight: 400; font-family: 'Prompt'; }
+        .legacy-icon { color: var(--gold); font-size: 1.2rem; margin-bottom: 1.2rem; }
+
+        /* --- Vote Section --- */
+        .vote-section { padding: 10rem 5%; text-align: center; border-top: 1px solid rgba(212,175,55,0.1); }
+        .vote-title { font-size: 5rem; font-weight: 700; background: var(--gold-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .vote-sub { font-size: 1.2rem; letter-spacing: 4px; color: #fff; margin: 1rem 0 3.5rem; font-weight: 200; }
+        .gold-pill {
+            display: inline-block; padding: 1rem 4rem; background: var(--gold-gradient);
+            color: black; text-decoration: none; font-weight: 600; border-radius: 50px;
+            transition: 0.4s; font-size: 1.2rem;
+        }
+        .gold-pill:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
+
+        /* --- Floating Button --- */
+        .safe-zone-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--gold-gradient); color: black;
+            padding: 1rem 2rem; border-radius: 50px;
+            text-decoration: none; font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 1000;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">THE SHINING 6</div>
+        <div class="nav-tagline">Mary's New Era</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="candidate-tag">ผู้สมัครหมายเลข 6</h2>
+            <h1 class="hero-title">BORN TO SHINE</h1>
+            <div class="slogan-container">
+                <p>มากกว่าคำสัญญา คือการลงมือทำ</p>
+            </div>
+            <p class="hero-footer-text">THE SHINING 6</p>
+        </div>
+    </section>
+
+    <section class="policy-section">
+        <div style="text-align: center; margin-bottom: 5rem;">
+            <h3 style="font-size: 3rem; color: var(--gold); font-style: italic;">Policy</h3>
+            <p style="letter-spacing: 4px; opacity: 0.5;">นโยบายพรรคเบอร์ 6</p>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-btn">01 THE WEBSITE <span>+</span></button>
+            <div class="accordion-content">
+                <div class="content-flex">
+                    <div class="policy-text-box">
+                        <h4 class="policy-inner-title">Website สภา (Safe Zone)</h4>
+                        <p class="policy-description">เราจะจัดทำ Website สภาขึ้นมาเพื่อรับฟังปัญหาของบุคลากรชาวมารีย์ทุกคน เพราะเสียงของทุกคนมีค่า และจะเป็น Safe Zone ให้กับทุกคนอย่างแท้จริง</p>
+                    </div>
+                    <div class="policy-img"><img src="155927_0.jpg"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-btn">02 SHINING FASHION <span>+</span></button>
+            <div class="accordion-content">
+                <div class="content-flex">
+                    <div class="policy-text-box">
+                        <h4 class="policy-inner-title">แฟชั่นและความมั่นใจ</h4>
+                        <p class="policy-description">สนับสนุนการใส่ชุดไปรเวทตามเทศกาล และจัดประกวด Fashion of The Festival เพื่อให้ทุกคนกล้าที่จะเป็นตัวเองในแบบที่ต้องการ</p>
+                    </div>
+                    <div class="policy-img"><img src="155953_0.jpg"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-btn">03 TRASH POINT <span>+</span></button>
+            <div class="accordion-content">
+                <div class="content-flex">
+                    <div class="policy-text-box">
+                        <h4 class="policy-inner-title">ขยะสร้างมูลค่า</h4>
+                        <p class="policy-description">สะสมแต้มขยะเพื่อแลกคะแนนห้อง และนำขยะไปจัดการอย่างถูกวิธี เพื่อลดโลกร้อนและสร้างสิ่งแวดล้อมที่ดีในโรงเรียน</p>
+                    </div>
+                    <div class="policy-img"><img src="155965_0.jpg"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-btn">04 THE SHINING E-SPORT <span>+</span></button>
+            <div class="accordion-content">
+                <div class="content-flex">
+                    <div class="policy-text-box">
+                        <h4 class="policy-inner-title">ก้าวสู่โลกดิจิทัล</h4>
+                        <p class="policy-description">จัดการแข่งขัน e-sport ตามใจผู้แข่ง โดยไม่กระทบการเรียน ผลักดันเกมให้เป็นประโยชน์และสร้างสรรค์</p>
+                    </div>
+                    <div class="policy-img"><img src="155961_0.jpg"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-btn">05 BORN TO SHINE <span>+</span></button>
+            <div class="accordion-content">
+                <div class="content-flex">
+                    <div class="policy-text-box">
+                        <h4 class="policy-inner-title">เวทีแห่งศักยภาพ</h4>
+                        <p class="policy-description">จัดกิจกรรมประกวด Folk Song, Cover dance และ Random dance เพื่อให้ทุกคนได้พัฒนาศักยภาพตนเองอย่างเต็มที่</p>
+                    </div>
+                    <div class="policy-img"><img src="155955_0.jpg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="legacy-section">
+        <h3 style="font-size: 3rem; color: var(--gold); letter-spacing: 2px;">THE CONTINUATION</h3>
+        <p style="opacity: 0.6; margin-top: 1rem;">สานต่อและพัฒนากิจกรรมของรุ่นพี่สภาให้ดียิ่งขึ้น</p>
+        <div class="legacy-grid">
+            <div class="legacy-card"><div class="legacy-icon">✦</div><h4>สายรหัสทุกระดับชั้น</h4></div>
+            <div class="legacy-card"><div class="legacy-icon">✦</div><h4>ตลาดนัดวิชาชีพ</h4></div>
+            <div class="legacy-card"><div class="legacy-icon">✦</div><h4>เสียงตามสาย</h4></div>
+            <div class="legacy-card"><div class="legacy-icon">✦</div><h4>ROCK NO DRUNK</h4></div>
+        </div>
+    </section>
+
+    <section class="vote-section">
+        <h2 class="vote-title">VOTE NO.6</h2>
+        <p class="vote-sub">SHINE TOGETHER, SHINE WITH US.</p>
+        <a href="#" class="gold-pill">THE SHINING 6</a>
+    </section>
+
+    <a href="#" class="safe-zone-btn">แจ้งปัญหา (Safe Zone)</a>
+
+    <script>
+        const items = document.querySelectorAll('.accordion-item');
+        items.forEach(item => {
+            const btn = item.querySelector('.accordion-btn');
+            const content = item.querySelector('.accordion-content');
+            btn.addEventListener('click', () => {
+                const isOpen = content.classList.contains('active');
+                document.querySelectorAll('.accordion-content').forEach(el => {
+                    el.classList.remove('active');
+                    el.previousElementSibling.querySelector('span').innerText = '+';
+                });
+                if (!isOpen) {
+                    content.classList.add('active');
+                    btn.querySelector('span').innerText = '-';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
