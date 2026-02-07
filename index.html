@@ -25,16 +25,12 @@
 
         h1, h2, h3, h4, h5 { font-family: 'Cormorant Garamond', serif; }
 
-        /* --- Background Effect --- */
+        /* --- Background & Animation Effects --- */
         #canvas-stars {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
         }
 
-        /* --- Animations --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -45,7 +41,6 @@
             -webkit-text-fill-color: transparent;
             animation: shineText 5s linear infinite;
         }
-
         @keyframes shineText { to { background-position: 200% center; } }
 
         /* --- Navigation --- */
@@ -63,7 +58,7 @@
         .nav-logo { font-size: 1.5rem; font-weight: 600; color: var(--gold); letter-spacing: 2px; }
         .nav-tagline { font-family: 'Cormorant Garamond'; font-style: italic; font-size: 0.9rem; color: #888; }
 
-        /* --- Hero Section --- */
+        /* --- 1. Hero Section --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -75,27 +70,44 @@
             background-position: center;
             text-align: center;
         }
-
         .hero-content { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-        .candidate-tag { font-size: 1.5rem; letter-spacing: 8px; color: var(--gold); font-weight: 300; }
-        .hero-title {
-            font-size: clamp(3.5rem, 12vw, 8.5rem);
-            line-height: 0.9;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin: 0.5rem 0;
-        }
+        .candidate-tag { font-size: 1.5rem; letter-spacing: 8px; color: var(--gold); }
+        .hero-title { font-size: clamp(3.5rem, 10vw, 8.5rem); font-weight: 700; text-transform: uppercase; }
         .slogan-box {
             background: rgba(0,0,0,0.6);
             padding: 0.8rem 2.5rem;
             border-radius: 4px;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            backdrop-filter: blur(5px);
         }
-        .slogan-box p { font-size: 1.6rem; color: #fff; font-weight: 200; letter-spacing: 1px; }
-        .hero-footer-text { font-size: 0.8rem; letter-spacing: 5px; opacity: 0.5; margin-top: 2rem; }
+        .slogan-box p { font-size: 1.6rem; color: #fff; font-weight: 200; }
 
-        /* --- Summary Section --- */
+        /* --- 2. Policies Section --- */
+        .policy-section { padding: 8rem 10%; }
+        .accordion-item { border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .accordion-btn {
+            width: 100%; padding: 3rem 0; background: none; border: none;
+            color: white; display: flex; justify-content: space-between;
+            font-family: 'Cormorant Garamond'; font-size: 2.8rem; cursor: pointer;
+        }
+        .accordion-content { max-height: 0; overflow: hidden; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .accordion-content.active { max-height: 1500px; padding-bottom: 4rem; }
+        .content-flex { display: flex; gap: 4rem; flex-wrap: wrap; align-items: center; padding: 1rem; }
+        .policy-text-box { flex: 1.5; min-width: 350px; }
+        .policy-inner-title { font-size: 2.8rem; margin-bottom: 1.5rem; }
+        .policy-description { font-size: 1.4rem; line-height: 1.8; color: #ddd; font-weight: 200; }
+        .policy-img { flex: 0.7; min-width: 250px; border: 1px solid var(--gold); }
+        .policy-img img { width: 100%; filter: grayscale(100%); transition: 0.8s; }
+        .accordion-item:hover img { filter: grayscale(0%); }
+
+        /* --- 3. Video Section (หลังนโยบาย) --- */
+        .video-section { padding: 5rem 10%; text-align: center; background: #0a0a0a; }
+        .video-container { 
+            max-width: 900px; margin: 0 auto; 
+            border: 1px solid var(--gold); padding: 10px; background: #000;
+        }
+        video { width: 100%; height: auto; display: block; }
+
+        /* --- 4. Summary Section (ก่อน THE CONTINUATION) --- */
         .summary-section {
             padding: 6rem 10%;
             display: grid;
@@ -105,77 +117,20 @@
             text-align: center;
         }
         .summary-card svg { width: 45px; height: 45px; fill: var(--gold); margin-bottom: 1.2rem; }
-        .summary-card h5 { font-size: 1.1rem; color: var(--gold); letter-spacing: 2px; font-weight: 400; }
+        .summary-card h5 { font-size: 1.1rem; color: var(--gold); letter-spacing: 2px; }
 
-        /* --- Video Section --- */
-        .video-section { padding: 5rem 10%; text-align: center; }
-        .video-container { 
-            max-width: 900px; margin: 0 auto; 
-            border: 1px solid var(--gold); padding: 10px; background: #000;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
-        }
-        video { width: 100%; height: auto; display: block; }
-
-        /* --- Policy Accordion --- */
-        .policy-section { padding: 8rem 10%; }
-        .accordion-item { border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
-        .accordion-btn {
-            width: 100%; padding: 3rem 0; background: none; border: none;
-            color: white; display: flex; justify-content: space-between;
-            font-family: 'Cormorant Garamond'; font-size: 2.8rem; cursor: pointer;
-            transition: 0.3s;
-        }
-        .accordion-btn:hover { color: var(--gold); padding-left: 15px; }
-
-        .accordion-content { max-height: 0; overflow: hidden; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .accordion-content.active { max-height: 1500px; padding-bottom: 4rem; }
-
-        .content-flex { display: flex; gap: 4rem; flex-wrap: wrap; align-items: center; padding: 1rem; }
-        .policy-text-box { flex: 1.5; min-width: 350px; }
-        .policy-inner-title { 
-            font-size: 2.8rem; margin-bottom: 1.5rem;
-        }
-        .policy-description { font-size: 1.4rem; line-height: 1.8; color: #ddd; font-weight: 200; }
-        .policy-img { flex: 0.7; min-width: 250px; border: 1px solid var(--gold); }
-        .policy-img img { width: 100%; filter: grayscale(100%); transition: 0.8s; }
-        .accordion-item:hover img { filter: grayscale(0%); }
-
-        /* --- Legacy Section --- */
-        .legacy-section { padding: 6rem 10%; text-align: center; background: #080808; }
+        /* --- 5. THE CONTINUATION Section --- */
+        .legacy-section { padding: 8rem 10%; text-align: center; background: #050505; }
         .legacy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 4rem; }
         .legacy-card { border: 1px solid rgba(212, 175, 55, 0.1); padding: 3.5rem 1.5rem; background: rgba(255,255,255,0.02); }
-        .legacy-card h4 { font-size: 1.4rem; color: #fff; font-weight: 400; font-family: 'Prompt'; letter-spacing: 1px; }
+        .legacy-card h4 { font-size: 1.4rem; color: #fff; font-family: 'Prompt'; }
 
-        /* --- Footer & Instagram --- */
-        .footer-section { padding: 10rem 5%; text-align: center; border-top: 1px solid rgba(212,175,55,0.1); }
-        .vote-title { font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; letter-spacing: 5px; margin-bottom: 1rem; }
-        .gold-pill { 
-            display: inline-block; padding: 1.2rem 4rem; background: var(--gold-gradient); 
-            color: black; text-decoration: none; font-weight: 600; border-radius: 50px; 
-            font-size: 1.3rem; margin-bottom: 3rem; transition: 0.4s;
-        }
-        .gold-pill:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
-        
-        .ig-link { 
-            display: flex; align-items: center; justify-content: center; gap: 10px; 
-            text-decoration: none; color: var(--gold); font-size: 1.3rem; transition: 0.3s;
-        }
-        .ig-link:hover { opacity: 0.6; }
+        /* --- Footer & IG --- */
+        .footer-section { padding: 8rem 5%; text-align: center; border-top: 1px solid rgba(212,175,55,0.1); }
+        .gold-pill { display: inline-block; padding: 1.2rem 4rem; background: var(--gold-gradient); color: black; text-decoration: none; font-weight: 600; border-radius: 50px; font-size: 1.3rem; margin-bottom: 3rem; }
+        .ig-link { display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; color: var(--gold); font-size: 1.3rem; }
 
-        /* --- Floating Button --- */
-        .safe-zone-btn {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--gold-gradient); color: black;
-            padding: 1.2rem 2.2rem; border-radius: 50px;
-            text-decoration: none; font-weight: 600;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 1000;
-        }
-
-        @media (max-width: 768px) {
-            .content-flex { flex-direction: column; }
-            .accordion-btn { font-size: 2rem; }
-            .slogan-box p { font-size: 1.2rem; }
-        }
+        .safe-zone-btn { position: fixed; bottom: 30px; right: 30px; background: var(--gold-gradient); color: black; padding: 1.2rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 600; z-index: 1000; }
     </style>
 </head>
 <body>
@@ -191,110 +146,59 @@
         <div class="hero-content">
             <h2 class="candidate-tag">ผู้สมัครหมายเลข 6</h2>
             <h1 class="hero-title shimmer">BORN TO SHINE</h1>
-            <div class="slogan-box">
-                <p>SHINE TO GETHER FOR A BETTER TOMORROW</p>
-            </div>
-            <p class="hero-footer-text">THE SHINING 6</p>
+            <div class="slogan-box"><p>SHINE TO GETHER FOR A BETTER TOMORROW</p></div>
         </div>
     </section>
 
-    <section class="summary-section reveal">
-        <div class="summary-card">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H9v-2h6v2zm4-4H5V8h14v6z"/></svg>
-            <h5>WEBSITE</h5>
+    <section class="policy-section">
+        <div style="text-align: center; margin-bottom: 5rem;">
+            <h3 style="font-size: 3.5rem; color: var(--gold); font-style: italic;">Manifesto</h3>
         </div>
-        <div class="summary-card">
-            <svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
-            <h5>FASHION</h5>
+        <div class="accordion-item reveal">
+            <button class="accordion-btn">01 THE WEBSITE <span>+</span></button>
+            <div class="accordion-content"><div class="content-flex"><div class="policy-text-box"><h4 class="policy-inner-title shimmer">Safe Zone สำหรับทุกคน</h4>
+                <p class="policy-description">เบื่อมั้ย!! กับปัญหาต่างๆที่เกิดขึ้นภายในโรงเรียน แล้วได้รับการแก้ไขอย่างไม่ทันท่วงที ทางเรา The Shining 6 จะมีการจัดทำ Website สภาขึ้นมาเพื่อรับฟังปัญหาของบุคลากรชาวมารีย์ทุกคน ไม่ว่าจะเป็น ครู นักเรียน หรือแม้แต่พี่ๆพนักงานที่คอยทำงานต่างๆให้พวกเรา เพราะเสียงของทุกคนมีค่า เกินกว่าที่เราจะเพิกเฉยได้และยังเป็นsafe zone ให้กับทุกๆคนอีกด้วย</p></div>
+                <div class="policy-img"><img src="155927_0.jpg"></div></div></div>
         </div>
-        <div class="summary-card">
-            <svg viewBox="0 0 24 24"><path d="M16 9h-1V3H9v6H8c-1.1 0-2 .9-2 2v10h12V11c0-1.1-.9-2-2-2zm-5-4h2v4h-2V5zm6 14H7v-8h10v8z"/></svg>
-            <h5>TRASH</h5>
+        <div class="accordion-item reveal">
+            <button class="accordion-btn">02 SHINING FASHION <span>+</span></button>
+            <div class="accordion-content"><div class="content-flex"><div class="policy-text-box"><h4 class="policy-inner-title shimmer">กล้าที่จะเป็นตัวเอง</h4>
+                <p class="policy-description">สนับสนุนให้พี่ๆน้องๆชาวมารีย์ทุกคน กล้าที่จะเป็นตัวเอง ในแบบที่ไม่มีอะไรมากำหนดความเป็นเรา  เราจะจัดให้ทุกๆคนมีการใส่ชุดไปรเวท ตามเทศกาล และจะมีการจัดประกวด Fashion of The Festival อีกด้วย เพราะเราเชื่อว่า ความมั่นใจเป็นสิ่งสำคัญที่ผลักดันให้ทุกคนกล้าที่จะลองมากขึ้น</p></div>
+                <div class="policy-img"><img src="155953_0.jpg"></div></div></div>
         </div>
-        <div class="summary-card">
-            <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-            <h5>E-SPORT</h5>
+        <div class="accordion-item reveal">
+            <button class="accordion-btn">03 TRASH POINT <span>+</span></button>
+            <div class="accordion-content"><div class="content-flex"><div class="policy-text-box"><h4 class="policy-inner-title shimmer">ขยะสร้างมูลค่า</h4>
+                <p class="policy-description">เราจะไม่สนับสนุนให้พี่ๆน้องชาวมารีย์มองขยะเป็นขยะ แต่เรา จะนำทุกคนให้มองอีกมุมมองหนึ่ง ที่ขยะนั้นมีค่าเกินกว่าที่ทุกคนจะคิด เราจะมีการเปิดให้ทุกคนสะสมแต้มขยะเพื่อแลกกกับคะแนนห้อง และนำขยะไป reduce reuse recycle  หรือไปกำจัดอย่างถูกวิธี เพื่อลดโอกาสการเกิดโลกร้อน และขยะล้นโลก</p></div>
+                <div class="policy-img"><img src="155965_0.jpg"></div></div></div>
         </div>
-        <div class="summary-card">
-            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <h5>TALENT</h5>
+        <div class="accordion-item reveal">
+            <button class="accordion-btn">04 THE SHINING E-SPORT <span>+</span></button>
+            <div class="accordion-content"><div class="content-flex"><div class="policy-text-box"><h4 class="policy-inner-title shimmer">ก้าวสู่โลกดิจิทัล</h4>
+                <p class="policy-description">เราจะจัดการแข่งขันe-sport ที่ไม่ใช่แค่การแข่งขันธรรมดา แต่เป็นการแข่งขันตามใจผู้แข่ง โดยเราจะให้ทุกคนได้เลือกว่าอยากแข่งขันเกมอะไร โดยที่การแข่งขันจะไม่กระทบกับการเรียน เพราะเทคโนโลยีมีค่า ถ้าเรารู้จักประโยชน์ เราไม่ควรไม่ควรลดค่าเกม แต่ต้องผลักดันในทางที่ถูกที่ควร</p></div>
+                <div class="policy-img"><img src="155961_0.jpg"></div></div></div>
+        </div>
+        <div class="accordion-item reveal">
+            <button class="accordion-btn">05 BORN TO SHINE <span>+</span></button>
+            <div class="accordion-content"><div class="content-flex"><div class="policy-text-box"><h4 class="policy-inner-title shimmer">เวทีแห่งศักยภาพ</h4>
+                <p class="policy-description">การจัดกิจกรรมประกวดต่างๆ ไม่ว่าจะเป็นการประกวด Folk Song, Cover dance และ random dance เพื่อให้ทุกๆคนชาวมารีย์ได้เล็งเห็นและพร้อมที่จะพัฒนาศักยภาพของตนเองให้ดียิ่งขึ้น และสามารถนำไปต่อยอดในอนาคตได้ เพราะความรู้ไม่ได้มีอยู่แค่ในหน้ากระดาษหนังสือ แต่คือการยอมรับศักยภาพของตนเอง</p></div>
+                <div class="policy-img"><img src="155955_0.jpg"></div></div></div>
         </div>
     </section>
 
     <section class="video-section reveal">
         <h4 style="font-size: 2.5rem; color: var(--gold); margin-bottom: 2rem; font-style: italic;">Campaign Film</h4>
         <div class="video-container">
-            <video controls>
-                <source src="791729354.836046.mp4" type="video/mp4">
-            </video>
+            <video controls><source src="791729354.836046.mp4" type="video/mp4"></video>
         </div>
     </section>
 
-    <section class="policy-section">
-        <div class="accordion-item reveal">
-            <button class="accordion-btn">01 WEBSITE <span>+</span></button>
-            <div class="accordion-content">
-                <div class="content-flex">
-                    <div class="policy-text-box">
-                        <h4 class="policy-inner-title shimmer">Safe Zone สำหรับทุกคน</h4>
-                        <p class="policy-description">เบื่อมั้ย!! กับปัญหาต่างๆที่เกิดขึ้นภายในโรงเรียน แล้วได้รับการแก้ไขอย่างไม่ทันท่วงที ทางเรา The Shining 6 จะมีการจัดทำ Website สภาขึ้นมาเพื่อรับฟังปัญหาของบุคลากรชาวมารีย์ทุกคน ไม่ว่าจะเป็น ครู นักเรียน หรือแม้แต่พี่ๆพนักงานที่คอยทำงานต่างๆให้พวกเรา เพราะเสียงของทุกคนมีค่า เกินกว่าที่เราจะเพิกเฉยได้และยังเป็นsafe zone ให้กับทุกๆคนอีกด้วย</p>
-                    </div>
-                    <div class="policy-img"><img src="155927_0.jpg"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion-item reveal">
-            <button class="accordion-btn">02 SHINING FASHION <span>+</span></button>
-            <div class="accordion-content">
-                <div class="content-flex">
-                    <div class="policy-text-box">
-                        <h4 class="policy-inner-title shimmer">กล้าที่จะเป็นตัวเอง</h4>
-                        <p class="policy-description">สนับสนุนให้พี่ๆน้องๆชาวมารีย์ทุกคน กล้าที่จะเป็นตัวเอง ในแบบที่ไม่มีอะไรมากำหนดความเป็นเรา  เราจะจัดให้ทุกๆคนมีการใส่ชุดไปรเวท ตามเทศกาล และจะมีการจัดประกวด Fashion of The Festival อีกด้วย เพราะเราเชื่อว่า ความมั่นใจเป็นสิ่งสำคัญที่ผลักดันให้ทุกคนกล้าที่จะลองมากขึ้น</p>
-                    </div>
-                    <div class="policy-img"><img src="155953_0.jpg"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion-item reveal">
-            <button class="accordion-btn">03 TRASH POINT <span>+</span></button>
-            <div class="accordion-content">
-                <div class="content-flex">
-                    <div class="policy-text-box">
-                        <h4 class="policy-inner-title shimmer">ขยะสร้างมูลค่า</h4>
-                        <p class="policy-description">เราจะไม่สนับสนุนให้พี่ๆน้องชาวมารีย์มองขยะเป็นขยะ แต่เรา จะนำทุกคนให้มองอีกมุมมองหนึ่ง ที่ขยะนั้นมีค่าเกินกว่าที่ทุกคนจะคิด เราจะมีการเปิดให้ทุกคนสะสมแต้มขยะเพื่อแลกกกับคะแนนห้อง และนำขยะไป reduce reuse recycle  หรือไปกำจัดอย่างถูกวิธี เพื่อลดโอกาสการเกิดโลกร้อน และขยะล้นโลก</p>
-                    </div>
-                    <div class="policy-img"><img src="155965_0.jpg"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion-item reveal">
-            <button class="accordion-btn">04 THE SHINING E-SPORT <span>+</span></button>
-            <div class="accordion-content">
-                <div class="content-flex">
-                    <div class="policy-text-box">
-                        <h4 class="policy-inner-title shimmer">ก้าวสู่โลกดิจิทัล</h4>
-                        <p class="policy-description">เราจะจัดการแข่งขันe-sport ที่ไม่ใช่แค่การแข่งขันธรรมดา แต่เป็นการแข่งขันตามใจผู้แข่ง โดยเราจะให้ทุกคนได้เลือกว่าอยากแข่งขันเกมอะไร โดยที่การแข่งขันจะไม่กระทบกับการเรียน เพราะเทคโนโลยีมีค่า ถ้าเรารู้จักประโยชน์ เราไม่ควรไม่ควรลดค่าเกม แต่ต้องผลักดันในทางที่ถูกที่ควร</p>
-                    </div>
-                    <div class="policy-img"><img src="155961_0.jpg"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion-item reveal">
-            <button class="accordion-btn">05 BORN TO SHINE <span>+</span></button>
-            <div class="accordion-content">
-                <div class="content-flex">
-                    <div class="policy-text-box">
-                        <h4 class="policy-inner-title shimmer">เวทีแห่งศักยภาพ</h4>
-                        <p class="policy-description">การจัดกิจกรรมประกวดต่างๆ ไม่ว่าจะเป็นการประกวด Folk Song, Cover dance และ random dance เพื่อให้ทุกๆคนชาวมารีย์ได้เล็งเห็นและพร้อมที่จะพัฒนาศักยภาพของตนเองให้ดียิ่งขึ้น และสามารถนำไปต่อยอดในอนาคตได้ เพราะความรู้ไม่ได้มีอยู่แค่ในหน้ากระดาษหนังสือ แต่คือการยอมรับศักยภาพของตนเอง</p>
-                    </div>
-                    <div class="policy-img"><img src="155955_0.jpg"></div>
-                </div>
-            </div>
-        </div>
+    <section class="summary-section reveal">
+        <div class="summary-card"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H9v-2h6v2zm4-4H5V8h14v6z"/></svg><h5>WEBSITE</h5></div>
+        <div class="summary-card"><svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg><h5>FASHION</h5></div>
+        <div class="summary-card"><svg viewBox="0 0 24 24"><path d="M16 9h-1V3H9v6H8c-1.1 0-2 .9-2 2v10h12V11c0-1.1-.9-2-2-2zm-5-4h2v4h-2V5zm6 14H7v-8h10v8z"/></svg><h5>TRASH</h5></div>
+        <div class="summary-card"><svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg><h5>E-SPORT</h5></div>
+        <div class="summary-card"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><h5>TALENT</h5></div>
     </section>
 
     <section class="legacy-section reveal">
@@ -308,84 +212,44 @@
     </section>
 
     <section class="footer-section reveal">
-        <h2 class="vote-title shimmer">VOTE NO.6</h2>
+        <h2 class="vote-title shimmer" style="font-size: 5rem; margin-bottom: 1rem;">VOTE NO.6</h2>
         <a href="#" class="gold-pill">THE SHINING 6</a>
-        <br>
-        <a href="https://www.instagram.com/theshining_6" target="_blank" class="ig-link">
-            <svg style="width:24px; height:24px; fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.246 2.242 1.308 3.607.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.246-3.607 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.246-2.242-1.308-3.607-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.246 3.607-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.657.075-3.056.401-4.225 1.57-1.169 1.169-1.496 2.568-1.571 4.225-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.075 1.657.401 3.056 1.571 4.225 1.169 1.169 2.568 1.496 4.225 1.571 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.657-.075 3.056-.401 4.225-1.57 1.169-1.169 1.496-2.568 1.571-4.225.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.075-1.657-.401-3.056-1.571-4.225-1.169-1.169-2.568-1.496-4.225-1.571-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            <span>theshining_6</span>
-        </a>
+        <br><a href="https://www.instagram.com/theshining_6" target="_blank" class="ig-link"><span>theshining_6</span></a>
     </section>
 
-    <a href="#" class="safe-zone-btn">กลับไปหน้าหลัก</a>
+    <a href="#" class="safe-zone-btn">แจ้งปัญหา (Safe Zone)</a>
 
     <script>
-        // --- Canvas Stars Background ---
         const canvas = document.getElementById('canvas-stars');
         const ctx = canvas.getContext('2d');
         let stars = [];
-
         function initStars() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
             stars = [];
             for (let i = 0; i < 150; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2,
-                    speed: Math.random() * 0.5
-                });
+                stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2, speed: Math.random() * 0.5 });
             }
         }
-
         function drawStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#D4AF37';
-            stars.forEach(s => {
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-                ctx.fill();
-                s.y -= s.speed;
-                if (s.y < 0) s.y = canvas.height;
-            });
+            ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = '#D4AF37';
+            stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2); ctx.fill(); s.y -= s.speed; if (s.y < 0) s.y = canvas.height; });
             requestAnimationFrame(drawStars);
         }
+        window.addEventListener('resize', initStars); initStars(); drawStars();
 
-        window.addEventListener('resize', initStars);
-        initStars();
-        drawStars();
-
-        // --- Exclusive Accordion Logic ---
         document.querySelectorAll('.accordion-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const content = btn.nextElementSibling;
                 const isOpen = content.classList.contains('active');
-                
-                // Close all others
-                document.querySelectorAll('.accordion-content').forEach(el => {
-                    el.classList.remove('active');
-                    el.previousElementSibling.querySelector('span').innerText = '+';
-                });
-
-                // Toggle current
-                if (!isOpen) {
-                    content.classList.add('active');
-                    btn.querySelector('span').innerText = '-';
-                }
+                document.querySelectorAll('.accordion-content').forEach(el => { el.classList.remove('active'); el.previousElementSibling.querySelector('span').innerText = '+'; });
+                if (!isOpen) { content.classList.add('active'); btn.querySelector('span').innerText = '-'; }
             });
         });
 
-        // --- Scroll Reveal Logic ---
         const revealOnScroll = () => {
-            document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
+            document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active'); });
         };
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Trigger once on load
+        window.addEventListener('scroll', revealOnScroll); revealOnScroll();
     </script>
 </body>
 </html>
