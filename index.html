@@ -145,6 +145,26 @@
         .legacy-card h4 { font-size: 1.4rem; color: #fff; letter-spacing: 1px; font-weight: 400; font-family: 'Prompt'; }
         .legacy-icon { color: var(--gold); font-size: 1.2rem; margin-bottom: 1.2rem; }
 
+                 /* --- 1. สรุปนโยบายแบบไอคอน --- */
+        .summary-section {
+            padding: 5rem 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            background: #080808;
+            text-align: center;
+        }
+        .summary-card svg { width: 45px; height: 45px; fill: var(--gold); margin-bottom: 1rem; }
+        .summary-card h5 { font-size: 1.1rem; color: var(--gold); letter-spacing: 1px; }
+
+        /* --- 2. วิดีโอแคมเปญ --- */
+        .video-section { padding: 5rem 10%; background: #0a0a0a; text-align: center; }
+        .video-container { 
+            max-width: 900px; margin: 0 auto; 
+            border: 1px solid var(--gold); padding: 10px; background: #000; 
+        }
+        video { width: 100%; height: auto; display: block; }
+        
         /* --- Vote Section & Footer --- */
         .vote-section { padding: 10rem 5%; text-align: center; border-top: 1px solid rgba(212,175,55,0.1); }
         .vote-title { font-size: 5rem; font-weight: 700; background: var(--gold-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
@@ -172,25 +192,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 1000;
             font-size: 1rem;
         }
-        /* --- 1. สรุปนโยบายแบบไอคอน --- */
-        .summary-section {
-            padding: 5rem 10%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            background: #080808;
-            text-align: center;
-        }
-        .summary-card svg { width: 45px; height: 45px; fill: var(--gold); margin-bottom: 1rem; }
-        .summary-card h5 { font-size: 1.1rem; color: var(--gold); letter-spacing: 1px; }
-
-        /* --- 2. วิดีโอแคมเปญ --- */
-        .video-section { padding: 5rem 10%; background: #0a0a0a; text-align: center; }
-        .video-container { 
-            max-width: 900px; margin: 0 auto; 
-            border: 1px solid var(--gold); padding: 10px; background: #000; 
-        }
-        video { width: 100%; height: auto; display: block; }
     </style>
 </head>
 <body>
