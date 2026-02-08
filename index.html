@@ -38,6 +38,7 @@
             background: var(--gold-gradient);
             background-size: 200% auto;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shineText 5s linear infinite;
         }
@@ -123,7 +124,7 @@
         .legacy-section { padding: 8rem 10%; text-align: center; background: #050505; }
         .legacy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 4rem; }
         .legacy-card { border: 1px solid rgba(212, 175, 55, 0.1); padding: 3.5rem 1.5rem; background: rgba(255,255,255,0.02); }
-        .legacy-card h4 { font-size: 1.4rem; color: #fff; font-family: 'Prompt'; }
+        .legacy-card h4 { font-size: 1.4rem; color: #ffffff; font-family: 'Prompt'; }
 
         /* --- Footer & IG --- */
         .footer-section { padding: 8rem 5%; text-align: center; border-top: 1px solid rgba(212,175,55,0.1); }
@@ -131,9 +132,105 @@
         .ig-link { display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; color: var(--gold); font-size: 1.3rem; }
 
         .safe-zone-btn { position: fixed; bottom: 30px; right: 30px; background: var(--gold-gradient); color: black; padding: 1.2rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 600; z-index: 1000; }
+    
+        /* --- Loading Screen Styles --- */
+        #intro-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #050505; /* ใช้สีดำเดียวกับพื้นหลัง */
+            z-index: 99999; /* ให้อยู่บนสุดเสมอ */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease-out; /* เอฟเฟกต์ตอนจางหาย */
+        }
+
+        .intro-content { padding-bottom: 20px; text-align: center; }
+
+        .intro-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--gold); /* ใช้สีทองเดิม */
+            letter-spacing: 10px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            animation: pulseText 2s infinite ease-in-out;
+        }
+
+        /* กรอบของเส้นโหลด */
+        .loading-bar-container {
+            width: 200px; /* ความยาวเส้นโหลด */
+            height: 3px; /* ความหนาเส้นโหลด */
+            background: rgba(212, 175, 55, 0.2); /* สีพื้นหลังเส้นโหลดจางๆ */
+            margin: 0 auto;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        /* ตัวเส้นโหลดสีทองที่วิ่ง */
+        .loading-bar {
+            height: 100%;
+            width: 0%; /* เริ่มต้นที่ 0% */
+            background: linear-gradient(90deg, #BF953F, #FCF6BA, #B38728, #AA771C); /* ไล่สีทอง */
+            /* ตั้งเวลาวิ่ง 2.5 วินาที */
+            animation: loadProgress 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        /* --- Animations Keyframes --- */
+        @keyframes pulseText { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+        @keyframes loadProgress { to { width: 100%; } }
+
+        /* --- เอฟเฟกต์แสงฟุ้งเมื่อเมาส์เลื่อนเข้า (Glow Effect) --- */
+        
+        /* แสงฟุ้งสำหรับกล่องสโลแกน */
+        .slogan-box:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            border-color: var(--gold);
+            transform: scale(1.02);
+            transition: 0.4s;
+        }
+
+        /* แสงฟุ้งสำหรับปุ่มนโยบาย */
+        .accordion-btn:hover {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+            color: #fff !important;
+        }
+
+        /* แสงฟุ้งสำหรับ Card กิจกรรมสานต่อ */
+        .legacy-card:hover {
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+
+        /* แสงฟุ้งสำหรับปุ่ม VOTE และ Instagram */
+        .gold-pill:hover, .ig-link:hover {
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+            transform: scale(1.05);
+        }
+
+        /* แสงฟุ้งสำหรับไอคอนสรุปนโยบาย */
+        .summary-card:hover svg {
+            filter: drop-shadow(0 0 10px var(--gold));
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
+
     </style>
 </head>
 <body>
+
+    <div id="intro-screen">
+        <div class="intro-content">
+            <div class="intro-text">THE SHINING 6</div>
+            <div class="loading-bar-container">
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+    </div>
 
     <canvas id="canvas-stars"></canvas>
 
@@ -251,6 +348,26 @@
             document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active'); });
         };
         window.addEventListener('scroll', revealOnScroll); revealOnScroll();
+
+        // --- ระบบปิดหน้า Intro Loading ---
+        window.addEventListener('load', () => {
+        const intro = document.getElementById('intro-screen');
+        // รอให้เส้นโหลดวิ่งเสร็จ (ประมาณ 2.5 วินาที) แล้วค่อยเริ่มจางหาย
+        setTimeout(() => {
+            intro.style.opacity = '0';
+            // หลังจากจางหายเสร็จ (0.8 วินาทีตาม CSS transition) ให้ซ่อนทิ้งไปเลย
+            setTimeout(() => intro.style.display = 'none', 800);
+        }, 2500); 
+    });
+
+    // --- ระบบ Spotlight (แสงตามเมาส์จางๆ ทั่วเว็บ) ---
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        // สร้างเงาสว่างสีทองจางๆ วิ่งตามเมาส์
+        document.body.style.background = `radial-gradient(circle at ${x}px ${y}px, #0a0a0a 0%, #050505 50%)`;
+    });
+
     </script>
 </body>
 </html>
